@@ -1,0 +1,78 @@
+body, html {
+    height: 100%;
+}
+
+.headerTitle {
+    padding-top: 175px;
+}
+
+#bg {
+    background-image: url("bg.jpg");
+    z-index: 0;
+
+    /* Full height */
+    min-height: 100%; 
+    background-attachment: fixed;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* position: fixed; */
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0);
+    position: fixed;
+  }
+
+#nav {
+    height: 50px;
+    
+   background-color: rgba(0, 0, 0, 0);
+    position: fixed;
+    width: 100%;
+    z-index: -1;
+
+}
+   
+#title {
+    color: rgb(206, 96, 171);
+    text-align: center;
+    margin-top: 130px;
+    margin-bottom:30px;
+    text-shadow: 3px 3px #000000;
+    text-outline: 1px 1px #000000;
+    font-family: 'Bungee Inline', cursive;
+    font-size: 120px;
+
+}
+
+#subTitle {
+    color: rgb(206, 96, 171);
+    text-align: center;
+    margin-bottom: 350px;
+    text-shadow: 1px 1px #000000;
+    text-outline: 1px 1px #000000;
+    font-family: 'Bungee', cursive;
+    font-size: 35px;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+#aboutBox {
+    background-color: rgba(255, 255, 255, 0.75);
+    margin-top: 150px;
+    padding-top: 20px;
+    margin-bottom:150px;
+    padding: 25px;
+    
+}
+
+#aboutTitle {
+    color: rgb(1, 164, 176);
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px #000000;
+    font-family: 'Lalezar', cursive;
+    font-size: 75px;
+}
