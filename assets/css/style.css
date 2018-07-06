@@ -1,7 +1,9 @@
 body, html {
     height: 100%;
 }
-
+div {
+    border-style: groove;
+}
 .headerTitle {
     padding-top: 175px;
 }
