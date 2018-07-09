@@ -1,0 +1,3 @@
+$("#secondBox").hide();
+
+

@@ -1,11 +1,36 @@
 body, html {
     height: 100%;
 }
-div {
+/* div {
     border-style: groove;
+} */
+
+
+form {
+    text-align: center;
 }
+
+nav {
+    background-color: rgba(0, 0, 0, 0);
+    position: fixed;
+  }
+
+
+
 .headerTitle {
     padding-top: 175px;
+}
+
+.button-wrapper {
+    padding-bottom: 100px;
+}
+
+.search-wrapper {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 75px;
+   margin-bottom: 5px;
+
 }
 
 #bg {
@@ -22,10 +47,19 @@ div {
     /* position: fixed; */
 }
 
-nav {
-    background-color: rgba(0, 0, 0, 0);
-    position: fixed;
-  }
+#bgTwo {
+    background-image: url("bg2.jpg");
+    z-index: 0;
+
+    /* Full height */
+    min-height: 100%; 
+    background-attachment: fixed;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* position: fixed; */
+}
 
 #nav {
     height: 50px;
@@ -77,4 +111,76 @@ nav {
     text-shadow: 2px 2px #000000;
     font-family: 'Lalezar', cursive;
     font-size: 75px;
+}
+
+#appTitle {
+    text-align: center;
+    padding-top: 50px;
+}
+
+#firstBox {
+    border-style: groove;
+    margin-top: 175px;
+    margin-bottom: 250px;
+}
+
+#searchButton {
+    text-align: center;
+   
+}
+
+#search {
+    width: 50%;
+    border-style: ridge;
+}
+
+#secondBox {
+    border-style: groove;
+    margin-top: 500px;
+    margin-bottom: 250px;
+}
+
+#categoriesTitle {
+    text-align: center;
+}
+
+#categoriesSubtitle {
+    text-align: center;
+}
+
+#thirdBox {
+    border-style: groove;
+    margin-top: 300px;
+    margin-bottom: 250px;
+}
+
+#graph {
+   width: 100%;
+   height: auto;
+}
+
+#fourthBox {
+    border-style: groove;
+}
+
+#fifth, #sixth, #seventh {
+    border-style: groove;
+    padding-left: 5px;
+}
+
+#lastBox {
+    height: auto;
+    margin-bottom: 300px;
+}
+
+#secondJump, #thirdJump, #lastJump {
+    top: -123px;
+    display: block;
+    position: relative;
+}
+
+.progress, .progress3 {
+    margin-top: 500px;
+    margin-bottom: 300px;
+    
 }
