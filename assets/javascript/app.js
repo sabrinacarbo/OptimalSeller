@@ -46,6 +46,8 @@ function renderCategories(categories) {
         ptag.append(label);
         $("#catContainer").append(ptag);
     }
+    var terms = $('#search').val();
+    $("#searchTerms").text("\""+terms + "\"");
 
 }
 
