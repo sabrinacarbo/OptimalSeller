@@ -6,19 +6,9 @@ var api_key = "c9xve9dj721yyt16e7ksofgu";
 // var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" + terms + "&limit=12&includes=Images:1&api_key=" + api_key;
 // console.log(terms);
 
-//Form Validation - ================= NEEDS TO BE COMPLETED ======================
-function validateForm() {
-    var x = document.forms["myForm"]["fname"].value;
-    if (x == "") {
-        alert("Name must be filled out");
-        return false;
-    }
-}
-
-
-
-
-
+$("#searchForm").on("submit", function () {
+	event.preventDefault();
+});
 
 function renderCategories(categories) {
 
@@ -57,27 +47,31 @@ $(document).ready(function () {
     //Uses API to search for categories returned for user text input
     $('#buttonOne').on('click', function () {
 
-        var terms = $('#search').val();
-        var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" +
-            terms + "&limit=12&includes=Images:1&api_key=" + api_key;
-        console.log(terms);
-        $.ajax({
-            url: etsyURL,
-            dataType: 'jsonp',
-            success: function (data) {
-                console.log("DATA IS", data);
+        if ($("#search").val() == "") {
+            return false
+        } else {
+            var terms = $('#search').val();
+            var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" +
+                terms + "&limit=12&includes=Images:1&api_key=" + api_key;
+            console.log(terms);
+            $.ajax({
+                url: etsyURL,
+                dataType: 'jsonp',
+                success: function (data) {
+                    console.log("DATA IS", data);
 
-                $("#catContainer").empty();
+                    $("#catContainer").empty();
 
-                var cat = data.results;
-                console.log(cat);
+                    var cat = data.results;
+                    console.log(cat);
 
-                renderCategories(cat);
+                    renderCategories(cat);
 
-                console.log(data);
-                return (data);
-            }
-        });
+                    console.log(data);
+                    return (data);
+                }
+            });
+        };
     });
 
     //Uses categories or category chosen by user to return only items that fit the criteria ==== IN PROCESS ====
