@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="col s6">
                     <form id="catContainer" action="#">
-                        <p>
+                        <!-- <p>
                             <label>
                                 <input type="checkbox" />
                                 <span>lorem</span>
@@ -79,12 +79,12 @@
                                 <input type="checkbox" />
                                 <span>lorem</span>
                             </label>
-                        </p>
+                        </p> -->
                     </form>
                 </div>
                 <div class="col s6">
-                    <form action="#">
-                        <p>
+                    <form action="#" id="catContainerTwo">
+                        <!-- <p>
                             <label>
                                 <input type="checkbox" />
                                 <span>lorem</span>
@@ -113,7 +113,7 @@
                                 <input type="checkbox" />
                                 <span>lorem</span>
                             </label>
-                        </p>
+                        </p> -->
                     </form>
                 </div>
             </div>
@@ -131,7 +131,11 @@
         <!--Third box to display pictures and text of item with cards-->
         <span id="thirdJump"></span>
         <div class="row z-depth-5" id="thirdBox">
-            <div class="col s4">
+            <div class="col s12" id="cardBox">
+
+            </div>
+            
+            <!-- <div class="col s4">
                 <div class="card">
                     <div class="card-image">
                         <img src="assets/css/placeholder.png">
@@ -163,7 +167,7 @@
                             I require little markup to use effectively.</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="button-wrapper">
                 <center>
                     <a class="searchButton btn pulse" id="buttonThree" href="#lastJump">
@@ -240,12 +244,12 @@
                 $('#secondBox').delay(5000).show(2000);
 
             })
-            $("#buttonTwo").click(function () {
+            // $("#buttonTwo").click(function () {
 
-                $('.progress2').show(0).delay(5000).hide(0);
-                $('#thirdBox').delay(5000).show(2000);
+            //     $('.progress2').show(0).delay(5000).hide(0);
+            //     $('#thirdBox').delay(5000).show(2000);
 
-            })
+            // })
 
             $("#buttonThree").click(function () {
 
