@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <body id="bgTwo">
@@ -19,7 +20,9 @@
             <div class="col s12">
                 <h1 id="appTitle">Optimal Seller</h1>
                 <div class="search-wrapper">
-                    <input type="search" id="search" placeholder="Enter Keyword Here">
+                     <form onsubmit="return validateForm()"> <!-- ++++++++ NEED TEXT BOX TO BE VALIDATED ++++++ -->
+                        <input type="search" id="search" placeholder="Enter Keyword Here">
+                    </form>
                 </div>
                 <div class="button-wrapper">
                     <center>
@@ -32,7 +35,7 @@
         </div>
         <!--Second box to display list of categories to choose from after keyword has been inputted and searched-->
         <span id="secondJump"></span>
-       
+
         <!-- <div class="progress">
                 <div class="indeterminate"></div>
             </div> -->
@@ -42,11 +45,11 @@
                     <h1 id="categoriesTitle">Categories</h1>
                     <p id="categoriesSubtitle">Please select all related categories from the list below</p>
                 </div>
-               
+
             </div>
             <div class="row">
                 <div class="col s6">
-                    <form action="#">
+                    <form id="catContainer" action="#">
                         <p>
                             <label>
                                 <input type="checkbox" />
@@ -115,16 +118,16 @@
                 </div>
             </div>
             <div class="button-wrapper">
-                    <center>
-                        <a class="searchButton btn pulse" id="buttonTwo" href="#thirdJump">
-                            <i class="large material-icons">send</i>
-                        </a>
-                    </center>
-                </div>
+                <center>
+                    <a class="searchButton btn pulse" id="buttonTwo" href="#thirdJump">
+                        <i class="large material-icons">send</i>
+                    </a>
+                </center>
+            </div>
         </div>
         <div class="progress">
-                <div class="indeterminate"></div>
-            </div>
+            <div class="indeterminate"></div>
+        </div>
         <!--Third box to display pictures and text of item with cards-->
         <span id="thirdJump"></span>
         <div class="row z-depth-5" id="thirdBox">
@@ -162,24 +165,29 @@
                 </div>
             </div>
             <div class="button-wrapper">
-                    <center>
-                        <a class="searchButton btn pulse" id="buttonThree" href="#lastJump">
-                            Show Optimal Price!
-                        </a>
-                    </center>
-                </div>
+                <center>
+                    <a class="searchButton btn pulse" id="buttonThree" href="#lastJump">
+                        Show Optimal Price!
+                    </a>
+                </center>
+            </div>
         </div>
         <div class="progress progress2">
-                <div class="indeterminate"></div>
-            </div>
+            <div class="indeterminate"></div>
+        </div>
         <!--Last box to show prices depicted on graph / suggested price / examples, categories, keywords-->
         <span id="lastJump"></span>
         <div class="progress progress3">
-                <div class="indeterminate"></div>
-            </div>
+            <div class="indeterminate"></div>
+        </div>
         <div class="row " id="lastBox">
             <div class="col s7 z-depth-5" id="fourthBox">
                 <p>Graph of prices</p>
+
+                <!-- Plotly chart will be drawn inside this div -->
+                *
+                <div id="plotly-div"></div>
+
                 <img src="assets/css/bell-curve.jpg" alt="bell-curve" id="graph">
                 <div class="row">
                     <p>Our Suggested Optimal Price: $100</p>
@@ -214,51 +222,48 @@
                     </ul>
                 </div>
             </div>
-            
+
         </div>
     </div>
     <script type="text/javascript" src="assets/javascript/app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     <script>
-            
-            $( document ).ready(function() {
-                $("#secondBox").hide();
-                $("#thirdBox").hide();
-                $("#lastBox").hide();
-                $(".progress").hide();
-            $("#buttonOne").click(function() {
-               
+        $(document).ready(function () {
+            $("#secondBox").hide();
+            $("#thirdBox").hide();
+            $("#lastBox").hide();
+            $(".progress").hide();
+            $("#buttonOne").click(function () {
+
                 $('.progress').show(0).delay(5000).hide(0);
                 $('#secondBox').delay(5000).show(2000);
 
             })
-            $("#buttonTwo").click(function() {
-               
-               $('.progress2').show(0).delay(5000).hide(0);
-               $('#thirdBox').delay(5000).show(2000);
+            $("#buttonTwo").click(function () {
 
-           })
+                $('.progress2').show(0).delay(5000).hide(0);
+                $('#thirdBox').delay(5000).show(2000);
 
-           $("#buttonThree").click(function() {
-               
-               $('.progress3').show(0).delay(5000).hide(0);
-               $('#lastBox').delay(5000).show(2000);
+            })
 
-           })
+            $("#buttonThree").click(function () {
 
-});
-            $('a').click(function () {
-                $('html, body').animate({
-                    scrollTop: $($(this).attr('href')).offset().top
-                }, 500);
-                return false;
-                
+                $('.progress3').show(0).delay(5000).hide(0);
+                $('#lastBox').delay(5000).show(2000);
 
-            });
+            })
+
+        });
+        $('a').click(function () {
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top
+            }, 500);
+            return false;
 
 
-        </script>
+        });
+    </script>
 
 </body>
 
