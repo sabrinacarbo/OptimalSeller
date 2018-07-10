@@ -52,7 +52,8 @@ function renderCategories(categories) {
         ptag.append(label);
         $("#catContainerTwo").append(ptag);
     }
-
+    var terms = $('#search').val();
+    $("#searchTerms").text("\""+ terms + "\"");
 
 }
 
@@ -70,10 +71,11 @@ function renderImages(image) {
        
         
     }
+
+    
 }
 
-    var terms = $('#search').val();
-    $("#searchTerms").text("\""+terms + "\"");
+
 
 
 function renderTitle(name) {

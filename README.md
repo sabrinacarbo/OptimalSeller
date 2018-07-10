@@ -1,38 +1,24 @@
 # ProjectOne
-Project Title
-One Paragraph of project description goes here
+Optimal Seller
+
+With this app, potential Etsy sellers can look up the item that they are potentially selling, and comparing them to other listings, see the best price that they can offer, and the categories that would best help them list it.
 
 Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+On the opening screen, click "Start Searching!" in the upper right corner, and type a few terms to describe your item, and click the generate button.
 
 Prerequisites
-What things you need to install the software and how to install them
+Requires a fairly current browser.
 
 Give examples
-Installing
-A step by step series of examples that tell you how to get a development env running
+A user wants to find out the best way that they can sell their wrought iron horse statue that's named Horsy.
 
-Say what the step will be
+After pressing the "Start Searching" button, "iron horse" is entered into the search box.
 
-Give the example
-And repeat
+Amoungst the categories that come up are clothing, jewelry, books, and others that simply wouldn't apply to Horsy.  The more accurate categories, "Home Decor," "Vintage", "Collectibles" and others are selected.
 
-until finished
-End with an example of getting some data out of the system or using it for a little demo
+The app then focuses on the resulting items that are iron horses, and in those categories.
 
-Running the tests
-Explain how to run the automated tests for this system
-
-Break down into end to end tests
-Explain what these tests test and why
-
-Give an example
-And coding style tests
-Explain what these tests test and why
-
-Give an example
-Deployment
-Add additional notes about how to deploy this on a live system
+Examples of other sellers' are shown.  A price is recommended, along with a bell curve chart to show you the prices of those items, as well as the tags that they have used, giving the seller a list of potential tags that they should use in their listing.
 
 Built With
 Dropwizard - The web framework used
@@ -41,12 +27,9 @@ ROME - Used to generate RSS Feeds
 Contributing
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 
-Versioning
-We use SemVer for versioning. For the versions available, see the tags on this repository.
 
 Authors
-Billie Thompson - Initial work - PurpleBooth
-See also the list of contributors who participated in this project.
+Wyatt Simpson, Sabrina Carbo, Daniel Kim, Michael Kadish
 
 License
 This project is licensed under the MIT License - see the LICENSE.md file for details
