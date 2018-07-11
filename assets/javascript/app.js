@@ -6,19 +6,9 @@ var api_key = "c9xve9dj721yyt16e7ksofgu";
 // var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" + terms + "&limit=12&includes=Images:1&api_key=" + api_key;
 // console.log(terms);
 
-//Form Validation - ================= NEEDS TO BE COMPLETED ======================
-function validateForm() {
-    var x = document.forms["myForm"]["fname"].value;
-    if (x == "") {
-        alert("Name must be filled out");
-        return false;
-    }
-}
-
-
-
-
-
+$("#searchForm").on("submit", function () {
+	event.preventDefault();
+});
 
 function renderCategories(categories) {
 
@@ -50,6 +40,7 @@ function renderCategories(categories) {
         ptag.append(label);
         $("#catContainer").append(ptag);
     }
+
     for (var l = 0; l < rightSide.length; l++) {
         var ptag = $("<p>");
         var label = $("<label>");
@@ -89,13 +80,16 @@ function renderImages(image) {
     }
 }
 
-// function renderTitle(name) {
-//     for (var i = 0; i < name.length; i++) {
-//         var mainTitle = name[i].title
-//         console.log(mainTitle);
-//         var
-//     }
-// }
+    var terms = $('#search').val();
+    $("#searchTerms").text("\""+terms + "\"");
+
+
+function renderTitle(name) {
+    for (var i = 0; i < name.length; i++) {
+        var mainTitle = name[i].title
+        console.log(mainTitle);
+    }
+}
 
 
 $(document).ready(function () {
@@ -103,32 +97,33 @@ $(document).ready(function () {
     //Uses API to search for categories returned for user text input
     $('#buttonOne').on('click', function () {
 
-        var terms = $('#search').val();
-        var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" +
-            terms + "&limit=12&includes=Images:1&api_key=" + api_key;
-        console.log(terms);
-        $.ajax({
-            url: etsyURL,
-            dataType: 'jsonp',
-            success: function (data) {
-                console.log("DATA IS", data);
 
-                $("#catContainer").empty();
-                $("#catContainerTwo").empty();
+        if ($("#search").val() == "") {
+            return false
+        } else {
+            var terms = $('#search').val();
+            var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" +
+                terms + "&limit=12&includes=Images:1&api_key=" + api_key;
+            console.log(terms);
+            $.ajax({
+                url: etsyURL,
+                dataType: 'jsonp',
+                success: function (data) {
+                    console.log("DATA IS", data);
 
-                var cat = data.results;
-                console.log(cat);
+                    $("#catContainer").empty();
+                    $("#catContainer2").empty();
 
-                renderCategories(cat);
-                
+                    var cat = data.results;
+                    console.log(cat);
 
-                console.log(data);
-                return (data);
-            }
-            
-        });
-       
-       
+                    renderCategories(cat);
+
+                    console.log(data);
+                    return (data);
+                }
+            });
+        };
     });
     $("#buttonTwo").on('click', function () {
         $('.progress2').show(0).delay(5000).hide(0);

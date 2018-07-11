@@ -20,16 +20,16 @@
             <div class="col s12">
                 <h1 id="appTitle">Optimal Seller</h1>
                 <div class="search-wrapper">
-                     <form onsubmit="return validateForm()"> <!-- ++++++++ NEED TEXT BOX TO BE VALIDATED ++++++ -->
-                        <input type="search" id="search" placeholder="Enter Keyword Here">
+                     <form name="searchForm" id="searchForm">
+                        <input required type="search" class="validate" name="searchBox" id="search" placeholder="Enter Keyword Here">
+                        <div class="button-wrapper">
+                            <center>
+                                <button class="searchButton btn pulse scrollButtons" id="buttonOne" href="#secondJump">Generate
+                                    <i class="large material-icons right">search</i>
+                                </button>
+                            </center>
+                        </div>
                     </form>
-                </div>
-                <div class="button-wrapper">
-                    <center>
-                        <a class="searchButton btn pulse" id="buttonOne" href="#secondJump">Generate
-                            <i class="large material-icons right">search</i>
-                        </a>
-                    </center>
                 </div>
             </div>
         </div>
@@ -43,6 +43,7 @@
             <div class="row">
                 <div class="col s12">
                     <h1 id="categoriesTitle">Categories</h1>
+                    <center><h3 id="searchTerms"></h3></center>
                     <p id="categoriesSubtitle">Please select all related categories from the list below</p>
                 </div>
 
@@ -119,7 +120,7 @@
             </div>
             <div class="button-wrapper">
                 <center>
-                    <a class="searchButton btn pulse" id="buttonTwo" href="#thirdJump">
+                    <a class="searchButton btn pulse scrollButtons" id="buttonTwo" href="#thirdJump">
                         <i class="large material-icons">send</i>
                     </a>
                 </center>
@@ -170,7 +171,7 @@
             </div> -->
             <div class="button-wrapper">
                 <center>
-                    <a class="searchButton btn pulse" id="buttonThree" href="#lastJump">
+                    <a class="searchButton btn pulse scrollButtons" id="buttonThree" href="#lastJump">
                         Show Optimal Price!
                     </a>
                 </center>
@@ -239,10 +240,12 @@
             $("#lastBox").hide();
             $(".progress").hide();
             $("#buttonOne").click(function () {
-
+                if ($("#search").val() == "") {
+                    return false
+                } else {
                 $('.progress').show(0).delay(5000).hide(0);
                 $('#secondBox').delay(5000).show(2000);
-
+                };
             })
             // $("#buttonTwo").click(function () {
 
@@ -259,12 +262,15 @@
             })
 
         });
-        $('a').click(function () {
-            $('html, body').animate({
-                scrollTop: $($(this).attr('href')).offset().top
-            }, 500);
-            return false;
-
+        $('.scrollButtons').click(function () {
+            if ($("#search").val() == "") {
+                return false
+            } else {
+                $('html, body').animate({
+                    scrollTop: $($(this).attr('href')).offset().top
+                }, 500);
+                return false;
+            };
 
         });
     </script>
