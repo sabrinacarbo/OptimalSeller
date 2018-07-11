@@ -1,52 +1,31 @@
-# ProjectOne
-Project Title
-One Paragraph of project description goes here
+# ProjectOne - Optimal Seller
+
+This app was created to assist not only individuals who have experience with selling product, but who are also new to selling. The app takes a keyword and categories the user inputs and provides a response showing the ideal price, best category or categories, the top 10-15 words they should use in their title, and actual examples of currently listed items. With this information, the seller can then make a listing aimed to target the customer through keywords and pricing. 
 
 Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Travel to the deployment site https://sabrinacarbo.github.io/ProjectOne/. Once here, select the "Start Searching!" option located in the upper right corner. This will bring you to a new page where you can type in a keyword or multiple keywords describing your item and then select the Generate button.
 
 Prerequisites
-What things you need to install the software and how to install them
+This app will run in all modern day browsers.
 
 Give examples
-Installing
-A step by step series of examples that tell you how to get a development env running
+1. A user wants to find out the best way that they can sell their wrought iron horse statue that's named Horsy.
 
-Say what the step will be
+2. After pressing the "Start Searching" button, the user then enters "iron horse" into the search box.
 
-Give the example
-And repeat
+3. Using the search word/s from the search box,  categories that include items with the keyword/s show up. For example, we get clothing, jewelry, books, and others that simply wouldn't apply to Horsy.  The user then has the option to either choose a corresponding category or categories, or leave this section blank. 
 
-until finished
-End with an example of getting some data out of the system or using it for a little demo
+4. The app then focuses on the resulting items that are iron horses, and in those categories.
 
-Running the tests
-Explain how to run the automated tests for this system
-
-Break down into end to end tests
-Explain what these tests test and why
-
-Give an example
-And coding style tests
-Explain what these tests test and why
-
-Give an example
-Deployment
-Add additional notes about how to deploy this on a live system
+5. Examples of other sellers' are shown.  A price is recommended, along with a bell curve chart to show you the prices of those items, as well as the tags that they have used, giving the seller a list of potential tags that they should use in their listing.
 
 Built With
-Dropwizard - The web framework used
-Maven - Dependency Management
-ROME - Used to generate RSS Feeds
-Contributing
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
-
-Versioning
-We use SemVer for versioning. For the versions available, see the tags on this repository.
+Materialize - The web framework used
+wordcloud2.js - For the word cloud
+plotly - For the bell curve of the prices.
 
 Authors
-Billie Thompson - Initial work - PurpleBooth
-See also the list of contributors who participated in this project.
+Wyatt Simpson, Sabrina Carbo, Daniel Kim, Michael Kadish
 
 License
 This project is licensed under the MIT License - see the LICENSE.md file for details
