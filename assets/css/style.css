@@ -15,11 +15,17 @@ nav {
     position: fixed;
   }
 
+  li {
+      color: rgb(1, 164, 176);
+      font-size: 20px;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
   .card {
       width: 30%;
-      height: auto;
+      height: 600px;
       float: left;
-      display: inline-block;
+      /* display: inline-block; */
 
         margin: 15px;
         padding: 15px;
@@ -161,8 +167,9 @@ nav {
 
 #thirdBox {
     border-style: groove;
-    margin-top: 300px;
+    margin-top: 30px;
     margin-bottom: 250px;
+    text-align: center;
 }
 
 #graph {
@@ -177,11 +184,12 @@ nav {
 #fifth, #sixth, #seventh {
     border-style: groove;
     padding-left: 5px;
+    text-align: center;
 }
 
 #lastBox {
     height: auto;
-    margin-bottom: 300px;
+    margin-bottom: 30px;
 }
 
 #secondJump, #thirdJump, #lastJump {
