@@ -15,9 +15,15 @@ nav {
     position: fixed;
   }
 
+  li {
+      color: rgb(1, 164, 176);
+      font-size: 20px;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
   .card {
       width: 30%;
-      height: 535px;
+      height: 600px;
       float: left;
       /* display: inline-block; */
 
