@@ -56,7 +56,7 @@ function renderCategories(categories) {
 
 }
 
-function renderImages(image) {
+function renderLast(image) {
     
     for (var i = 0; i < image.length; i++) {
         var imageUrl = image[i].Images[0].url_570xN  
@@ -84,12 +84,12 @@ function renderImages(image) {
     $("#searchTerms").text("\""+terms + "\"");
 
 
-function renderTitle(name) {
-    for (var i = 0; i < name.length; i++) {
-        var mainTitle = name[i].title
-        console.log(mainTitle);
-    }
-}
+// function renderTitle(name) {
+//     for (var i = 0; i < name.length; i++) {
+//         var mainTitle = name[i].title
+//         console.log(mainTitle);
+//     }
+// }
 
 
 $(document).ready(function () {
@@ -127,7 +127,9 @@ $(document).ready(function () {
     });
     $("#buttonTwo").on('click', function () {
         $('.progress2').show(0).delay(5000).hide(0);
+        $('#lastBox').delay(5000).show(2000);
         $('#thirdBox').delay(5000).show(2000);
+        
         
         var terms = $('#search').val();
         var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" +
@@ -141,7 +143,7 @@ $(document).ready(function () {
                 var cat = data.results;
                 console.log(cat);
 
-                renderImages(cat);
+                renderLast(cat);
                 // renderTitle(cat);
                 
 
