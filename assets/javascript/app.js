@@ -57,7 +57,7 @@ function renderCategories(categories) {
 }
 
 function renderLast(image) {
-    
+        
     for (var i = 0; i < image.length; i++) {
         var imageUrl = image[i].Images[0].url_570xN  
         console.log(imageUrl);
@@ -76,10 +76,27 @@ function renderLast(image) {
        var p = $("<p>" + mainTitle + "</p>")
        cardContent.append(p);
        cardClass.append(cardContent);
-        
     }
+       var dupedCategories = [];
+       var deDupedCategories = [];
+   
+       for (var i = 0; i < image.length; i++) {
+           dupedCategories = dupedCategories.concat(image[i].category_path);
+       }
+   
+       for (var j = 0; j < dupedCategories.length; j++) {
+           if (!deDupedCategories.includes(dupedCategories[j])) {
+               deDupedCategories.push(dupedCategories[j]);
+           }
+       }
+       console.log(deDupedCategories);
+       for (var k = 0; k < 5; k++) {
+        var listItem = $("<li>" + deDupedCategories[k] + "</li>")
+        $("#list").append(listItem);
+       
+    
 }
-
+}
     var terms = $('#search').val();
     $("#searchTerms").text("\""+terms + "\"");
 
@@ -127,8 +144,8 @@ $(document).ready(function () {
     });
     $("#buttonTwo").on('click', function () {
         $('.progress2').show(0).delay(5000).hide(0);
-        $('#lastBox').delay(5000).show(2000);
-        $('#thirdBox').delay(5000).show(2000);
+        $('#lastBox').delay(5000).show("slow");
+        $('#thirdBox').delay(5000).show("slow");
         
         
         var terms = $('#search').val();

@@ -126,6 +126,7 @@
                 </center>
             </div>
         </div>
+        
         <div class="progress">
             <div class="indeterminate"></div>
         </div>
@@ -145,24 +146,28 @@
                     </div>
                 </div>
                 <div class="row z-depth-5" id="seventh">
-                        <p>Title/Keywords:</p>
-                        <ul class="browser-default">
-                            <li>lorem</li>
-                            <li>lorem</li>
-                            <li>lorem</li>
-                            <li>lorem</li>
-                        </ul>
+                        <h3>Top 5 Categories:</h3>
+                        <ul id="list">
+                                
+                            </ul>
+                        <canvas id="my_canvas"></canvas>
                     </div>
                 </div>
-                <span id="thirdJump"></span>
+               
                 <div class="row z-depth-5" id="thirdBox">
                         <h1>Top Listed Items</h1>
+                        
                         <p>Click on image to see the direct listing on Etsy</p>
                         <div class="col s12" id="cardBox">
             
                         </div>
     
             </div>
+            <div class="progress progress2">
+                    <div class="indeterminate"></div>
+                </div>
+                <span id="thirdJump"></span>
+            
             
        
             
@@ -208,9 +213,9 @@
                 </center>
             </div> -->
         
-        <div class="progress progress2">
+        <!-- <div class="progress progress2">
             <div class="indeterminate"></div>
-        </div>
+        </div> -->
         <!-- Last box to show prices depicted on graph / suggested price / examples, categories, keywords
         <span id="lastJump"></span>
         <div class="progress progress3">
@@ -275,7 +280,7 @@
                     return false
                 } else {
                 $('.progress').show(0).delay(5000).hide(0);
-                $('#secondBox').delay(5000).show(2000);
+                $('#secondBox').delay(5000).show("slow");
                 };
             })
             // $("#buttonTwo").click(function () {
