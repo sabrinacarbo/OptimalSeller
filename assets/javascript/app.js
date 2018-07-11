@@ -19,12 +19,13 @@ var s;
 $("#searchForm").on("submit", function () {
     event.preventDefault();
 });
-
 function renderCategories(categories) {
 
     var dupedCategories = [];
     var deDupedCategories = [];
 
+
+    
     for (var i = 0; i < categories.length; i++) {
         dupedCategories = dupedCategories.concat(categories[i].category_path);
     }
@@ -86,6 +87,7 @@ function renderLast(image) {
         $("#cardBox").append(cardClass);
         var mainTitle = image[i].title;
         console.log(mainTitle);
+        titles.push (mainTitle)
         var cardContent = $("<div class='card-content'>");
         var p = $("<p>" + mainTitle + "</p>")
         cardContent.append(p);
@@ -97,6 +99,7 @@ function renderLast(image) {
     for (var i = 0; i < image.length; i++) {
         dupedCategories = dupedCategories.concat(image[i].category_path);
     }
+    
 
     for (var j = 0; j < dupedCategories.length; j++) {
         if (!deDupedCategories.includes(dupedCategories[j])) {
@@ -109,18 +112,8 @@ function renderLast(image) {
         $("#list").append(listItem);
     }
 }
+    
 
-
-
-
-function renderTitle(name) {
-    for (var i = 0; i < name.length; i++) {
-        var mainTitle = name[i].title;
-        titles.push(mainTitle)
-
-
-    }
-}
 
 
 $(document).ready(function () {
@@ -149,10 +142,12 @@ $(document).ready(function () {
                     console.log(cat);
 
                     renderCategories(cat);
-
+                    
+              
                     console.log(data);
                     return (data);
                 }
+                
             });
         };
     });
@@ -175,8 +170,7 @@ $(document).ready(function () {
                 console.log(cat);
 
                 renderLast(cat);
-                // renderTitle(cat);
-
+                       
                 var priceArray = [];
                 var badArray = [];
 
@@ -241,56 +235,48 @@ $(document).ready(function () {
                 titlesC = titlesB.split(' ')
                 console.log("joined titles", titlesC)
                 for (q = 0; q < titlesC.length; q++) {
-                    if (titlesC[q].length > 2 && titlesC[q] != "and" && titlesC[q] != "but" && titlesC[q] != "the") {
+                    if (titlesC[q].length > 2 && titlesC[q] != "and" && titlesC[q] != "but" && titlesC[q] != "the" && terms.includes(titlesC[q]) != true) {
                         titlesD.push(titlesC[q].toUpperCase())
                     }
                 }
                 console.log(titlesD)
-                //var numberCount=0
-                //for (var r=0; r<titlesD.length;r){
-                //    for (var s=r+1; s<titlesD.length; s++){
-                //        if (titlesD[r]=titlesD[s]){
-                //            numberCount++;
-                //            s--;
-                //            titlesD.splice(s,1);
-                //        }
-                //    }     
-                //    var lists=[]                      
-                //    lists.push([titlesD[r],numberCount]);
-                //    titlesD.splice(r,1);
-                //}
-                var wordCount = {};
-                titlesD.forEach(function (word) {
+                
+                console.log(1);
+            var wordCount = {};
+                console.log(2);
+            titlesD.forEach(function (word) {
                     if (!wordCount[word]) {
                         wordCount[word] = 1;
                     } else {
                         wordCount[word]++;
                     }
-
+                    console.log(3);
                     var wordCountArray = [];
                     Object.keys(wordCount).forEach(function (word) {
-                        wordCountArray.push([word, wordCount[word] * 10]);
+                        if(wordCount[word]>1){
+                        wordCountArray.push([word, 10*wordCount[word]])};
                     });
                     console.log(wordCountArray);
-
-
+                    console.log(4);
                     WordCloud(document.getElementById("my_canvas"),
                         {
-                            list: wordCountArray, gridsize
+                            list:  wordCountArray
+                            
                         }
-                    )
+                    );
+                    console.log(terms)
                 });
 
                 //var wordCountArray = [];
                 //Object.keys(wordCount).forEach(function ( word ) {
                 //  wordCountArray.push([ word, wordCount[word] ]);
-            },
+                return data;},
         }, )
 
 
         //              console.log(lists)
         //New array in list format, via for loop of the count of said words
-        return data;
+        
 
 
 
