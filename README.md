@@ -21,12 +21,9 @@ The app then focuses on the resulting items that are iron horses, and in those c
 Examples of other sellers' are shown.  A price is recommended, along with a bell curve chart to show you the prices of those items, as well as the tags that they have used, giving the seller a list of potential tags that they should use in their listing.
 
 Built With
-Dropwizard - The web framework used
-Maven - Dependency Management
-ROME - Used to generate RSS Feeds
-Contributing
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
-
+Materialize - The web framework used
+wordcloud2.js - For the word cloud
+plotly - For the bell curve of the prices.
 
 Authors
 Wyatt Simpson, Sabrina Carbo, Daniel Kim, Michael Kadish

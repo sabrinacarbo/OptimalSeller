@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://timdream.org/wordcloud2.js/src/wordcloud2.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
@@ -85,6 +86,7 @@
                 </div>
                 <div class="col s6">
                     <form action="#" id="catContainerTwo">
+
                         <!-- <p>
                             <label>
                                 <input type="checkbox" />
@@ -132,9 +134,9 @@
         <!--Third box to display pictures and text of item with cards-->
         <span id="thirdJump"></span>
         <div class="row z-depth-5" id="thirdBox">
-            <div class="col s12" id="cardBox">
+            <canvas id="my_canvas"></canvas>
 
-            </div>
+            
             
             <!-- <div class="col s4">
                 <div class="card">
