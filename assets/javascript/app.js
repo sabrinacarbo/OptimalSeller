@@ -70,23 +70,32 @@ function renderImages(image) {
     for (var i = 0; i < image.length; i++) {
         var imageUrl = image[i].Images[0].url_570xN  
         console.log(imageUrl);
+        var link = image[i].url 
         var cardClass = $("<div class='card'>");
         var cardImage = $("<div class='card-image'>");
         var img = $("<img src=" + imageUrl + ">");
-        cardImage.append(img);
+        var ref = $("<a target='_blank' href=" + link + ">")
+        ref.append(img);
+        cardImage.append(ref);
         cardClass.append(cardImage);
         $("#cardBox").append(cardClass);
-       
+       var mainTitle = image[i].title ;
+       console.log(mainTitle);
+       var cardContent = $("<div class='card-content'>");
+       var p = $("<p>" + mainTitle + "</p>")
+       cardContent.append(p);
+       cardClass.append(cardContent);
         
     }
 }
 
-function renderTitle(name) {
-    for (var i = 0; i < name.length; i++) {
-        var mainTitle = name[i].title
-        console.log(mainTitle);
-    }
-}
+// function renderTitle(name) {
+//     for (var i = 0; i < name.length; i++) {
+//         var mainTitle = name[i].title
+//         console.log(mainTitle);
+//         var
+//     }
+// }
 
 
 $(document).ready(function () {
@@ -105,7 +114,7 @@ $(document).ready(function () {
                 console.log("DATA IS", data);
 
                 $("#catContainer").empty();
-                $("#catContainer2").empty();
+                $("#catContainerTwo").empty();
 
                 var cat = data.results;
                 console.log(cat);
@@ -138,7 +147,7 @@ $(document).ready(function () {
                 console.log(cat);
 
                 renderImages(cat);
-                renderTitle(cat);
+                // renderTitle(cat);
                 
 
                 console.log(data);
