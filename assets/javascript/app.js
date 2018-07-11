@@ -1,8 +1,18 @@
 $("#secondBox").hide();
 
 //====================== GLOBAL VARIABLES =============================
-
+var titles = [];
+var titlesB;
+var titlesC;
+var titlesD = [];
+var titlesE;
+var titlesF;
+var u;
+var lists = [];
 var api_key = "c9xve9dj721yyt16e7ksofgu";
+var q;
+var r;
+var s;
 // var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" + terms + "&limit=12&includes=Images:1&api_key=" + api_key;
 // console.log(terms);
 
@@ -52,8 +62,9 @@ function renderCategories(categories) {
         ptag.append(label);
         $("#catContainerTwo").append(ptag);
     }
-var terms = $('#search').val();
-$("#searchTerms").text("\"" + terms + "\"");
+    var terms = $('#search').val();
+    $("#searchTerms").text("\"" + terms + "\"");
+
 
 }
 
@@ -61,11 +72,6 @@ var terms = $('#search').val();
 $("#searchTerms").text("\"" + terms + "\"");
 
 function renderLast(image) {
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> 693395df75391ad328d43557f62f657a53ab34db
     for (var i = 0; i < image.length; i++) {
         var imageUrl = image[i].Images[0].url_570xN
         console.log(imageUrl);
@@ -78,43 +84,43 @@ function renderLast(image) {
         cardImage.append(ref);
         cardClass.append(cardImage);
         $("#cardBox").append(cardClass);
-       var mainTitle = image[i].title ;
-       console.log(mainTitle);
-       var cardContent = $("<div class='card-content'>");
-       var p = $("<p>" + mainTitle + "</p>")
-       cardContent.append(p);
-       cardClass.append(cardContent);
+        var mainTitle = image[i].title;
+        console.log(mainTitle);
+        var cardContent = $("<div class='card-content'>");
+        var p = $("<p>" + mainTitle + "</p>")
+        cardContent.append(p);
+        cardClass.append(cardContent);
     }
-       var dupedCategories = [];
-       var deDupedCategories = [];
-   
-       for (var i = 0; i < image.length; i++) {
-           dupedCategories = dupedCategories.concat(image[i].category_path);
-       }
-   
-       for (var j = 0; j < dupedCategories.length; j++) {
-           if (!deDupedCategories.includes(dupedCategories[j])) {
-               deDupedCategories.push(dupedCategories[j]);
-           }
-       }
-       console.log(deDupedCategories);
-       for (var k = 0; k < 5; k++) {
+    var dupedCategories = [];
+    var deDupedCategories = [];
+
+    for (var i = 0; i < image.length; i++) {
+        dupedCategories = dupedCategories.concat(image[i].category_path);
+    }
+
+    for (var j = 0; j < dupedCategories.length; j++) {
+        if (!deDupedCategories.includes(dupedCategories[j])) {
+            deDupedCategories.push(dupedCategories[j]);
+        }
+    }
+    console.log(deDupedCategories);
+    for (var k = 0; k < 5; k++) {
         var listItem = $("<li>" + deDupedCategories[k] + "</li>")
         $("#list").append(listItem);
-       
-    
-}
+    }
 }
 
 
 
 
-// function renderTitle(name) {
-//     for (var i = 0; i < name.length; i++) {
-//         var mainTitle = name[i].title
-//         console.log(mainTitle);
-//     }
-// }
+function renderTitle(name) {
+    for (var i = 0; i < name.length; i++) {
+        var mainTitle = name[i].title;
+        titles.push(mainTitle)
+
+
+    }
+}
 
 
 $(document).ready(function () {
@@ -154,8 +160,8 @@ $(document).ready(function () {
         $('.progress2').show(0).delay(5000).hide(0);
         $('#lastBox').delay(5000).show("slow");
         $('#thirdBox').delay(5000).show("slow");
-        
-        
+
+
         var terms = $('#search').val();
         var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" +
             terms + "&limit=12&includes=Images:1&api_key=" + api_key;
@@ -227,11 +233,70 @@ $(document).ready(function () {
 
                 Plotly.plot("plotly-div", trace);
 
-                console.log(data);
-                return (data);
 
-            }
-        });
+
+                console.log(titles);
+                titlesB = titles.join();
+                console.log("joined titles", titlesB)
+                titlesC = titlesB.split(' ')
+                console.log("joined titles", titlesC)
+                for (q = 0; q < titlesC.length; q++) {
+                    if (titlesC[q].length > 2 && titlesC[q] != "and" && titlesC[q] != "but" && titlesC[q] != "the") {
+                        titlesD.push(titlesC[q].toUpperCase())
+                    }
+                }
+                console.log(titlesD)
+                //var numberCount=0
+                //for (var r=0; r<titlesD.length;r){
+                //    for (var s=r+1; s<titlesD.length; s++){
+                //        if (titlesD[r]=titlesD[s]){
+                //            numberCount++;
+                //            s--;
+                //            titlesD.splice(s,1);
+                //        }
+                //    }     
+                //    var lists=[]                      
+                //    lists.push([titlesD[r],numberCount]);
+                //    titlesD.splice(r,1);
+                //}
+                var wordCount = {};
+                titlesD.forEach(function (word) {
+                    if (!wordCount[word]) {
+                        wordCount[word] = 1;
+                    } else {
+                        wordCount[word]++;
+                    }
+
+                    var wordCountArray = [];
+                    Object.keys(wordCount).forEach(function (word) {
+                        wordCountArray.push([word, wordCount[word] * 10]);
+                    });
+                    console.log(wordCountArray);
+
+
+                    WordCloud(document.getElementById("my_canvas"),
+                        {
+                            list: wordCountArray, gridsize
+                        }
+                    )
+                });
+
+                //var wordCountArray = [];
+                //Object.keys(wordCount).forEach(function ( word ) {
+                //  wordCountArray.push([ word, wordCount[word] ]);
+            },
+        }, )
+
+
+        //              console.log(lists)
+        //New array in list format, via for loop of the count of said words
+        return data;
+
+
+
+
+
+
     });
 
 
