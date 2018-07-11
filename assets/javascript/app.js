@@ -61,11 +61,7 @@ var terms = $('#search').val();
 $("#searchTerms").text("\"" + terms + "\"");
 
 function renderLast(image) {
-<<<<<<< HEAD
         
-=======
-
->>>>>>> 693395df75391ad328d43557f62f657a53ab34db
     for (var i = 0; i < image.length; i++) {
         var imageUrl = image[i].Images[0].url_570xN
         console.log(imageUrl);
@@ -192,6 +188,8 @@ $(document).ready(function () {
                 console.log("sum", priceArraySum);
                 var priceArrayAvg = priceArraySum / priceArray.length;
                 console.log("avg", priceArrayAvg);
+                var displayPrice = priceArrayAvg.toFixed(2);
+                $("#averagePrice").append("Average Price: $" + displayPrice);
 
                 var priceArraySTD = math.std(priceArray);
                 console.log("std", priceArraySTD);
