@@ -121,7 +121,7 @@
             <div class="button-wrapper">
                 <center>
                     <a class="searchButton btn pulse scrollButtons" id="buttonTwo" href="#thirdJump">
-                        <i class="large material-icons">send</i>
+                        <i class="large material-icons">SHOW OPTIMAL DATA send</i>
                     </a>
                 </center>
             </div>
@@ -130,11 +130,42 @@
             <div class="indeterminate"></div>
         </div>
         <!--Third box to display pictures and text of item with cards-->
-        <span id="thirdJump"></span>
-        <div class="row z-depth-5" id="thirdBox">
-            <div class="col s12" id="cardBox">
-
+        
+        <div class="row " id="lastBox">
+                <div class="col s7 z-depth-5" id="fourthBox">
+                    <p>Graph of prices</p>
+    
+                    <!-- Plotly chart will be drawn inside this div -->
+                    *
+                    <div id="plotly-div"></div>
+    
+                    <img src="assets/css/bell-curve.jpg" alt="bell-curve" id="graph">
+                    <div class="row">
+                        <p>Our Suggested Optimal Price: $100</p>
+                    </div>
+                </div>
+                <div class="row z-depth-5" id="seventh">
+                        <p>Title/Keywords:</p>
+                        <ul class="browser-default">
+                            <li>lorem</li>
+                            <li>lorem</li>
+                            <li>lorem</li>
+                            <li>lorem</li>
+                        </ul>
+                    </div>
+                </div>
+                <span id="thirdJump"></span>
+                <div class="row z-depth-5" id="thirdBox">
+                        <h1>Top Listed Items</h1>
+                        <p>Click on image to see the direct listing on Etsy</p>
+                        <div class="col s12" id="cardBox">
+            
+                        </div>
+    
             </div>
+            
+       
+            
             
             <!-- <div class="col s4">
                 <div class="card">
@@ -169,29 +200,29 @@
                     </div>
                 </div>
             </div> -->
-            <div class="button-wrapper">
+            <!-- <div class="button-wrapper">
                 <center>
                     <a class="searchButton btn pulse scrollButtons" id="buttonThree" href="#lastJump">
                         Show Optimal Price!
                     </a>
                 </center>
-            </div>
-        </div>
+            </div> -->
+        
         <div class="progress progress2">
             <div class="indeterminate"></div>
         </div>
-        <!--Last box to show prices depicted on graph / suggested price / examples, categories, keywords-->
+        <!-- Last box to show prices depicted on graph / suggested price / examples, categories, keywords
         <span id="lastJump"></span>
         <div class="progress progress3">
             <div class="indeterminate"></div>
         </div>
         <div class="row " id="lastBox">
             <div class="col s7 z-depth-5" id="fourthBox">
-                <p>Graph of prices</p>
+                <p>Graph of prices</p> -->
 
                 <!-- Plotly chart will be drawn inside this div -->
-                *
-                <div id="plotly-div"></div>
+                
+                <!-- <div id="plotly-div"></div>
 
                 <img src="assets/css/bell-curve.jpg" alt="bell-curve" id="graph">
                 <div class="row">
@@ -207,8 +238,8 @@
                         <li>lorem</li>
                         <li>lorem</li>
                     </ul>
-                </div>
-                <div class="row z-depth-5" id="sixth">
+                </div> -->
+                <!-- <div class="row z-depth-5" id="sixth">
                     <p>Ideal categories:</p>
                     <ul class="browser-default">
                         <li>lorem</li>
@@ -228,7 +259,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
     </div>
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 
@@ -254,12 +285,12 @@
 
             // })
 
-            $("#buttonThree").click(function () {
+            // $("#buttonThree").click(function () {
 
-                $('.progress3').show(0).delay(5000).hide(0);
-                $('#lastBox').delay(5000).show(2000);
+            //     $('.progress3').show(0).delay(5000).hide(0);
+            //     $('#lastBox').delay(5000).show(2000);
 
-            })
+            // })
 
         });
         $('.scrollButtons').click(function () {
