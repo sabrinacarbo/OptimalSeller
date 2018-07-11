@@ -7,7 +7,7 @@ var api_key = "c9xve9dj721yyt16e7ksofgu";
 // console.log(terms);
 
 $("#searchForm").on("submit", function () {
-	event.preventDefault();
+    event.preventDefault();
 });
 
 function renderCategories(categories) {
@@ -52,16 +52,20 @@ function renderCategories(categories) {
         ptag.append(label);
         $("#catContainerTwo").append(ptag);
     }
-
+var terms = $('#search').val();
+$("#searchTerms").text("\"" + terms + "\"");
 
 }
 
+var terms = $('#search').val();
+$("#searchTerms").text("\"" + terms + "\"");
+
 function renderLast(image) {
-    
+
     for (var i = 0; i < image.length; i++) {
-        var imageUrl = image[i].Images[0].url_570xN  
+        var imageUrl = image[i].Images[0].url_570xN
         console.log(imageUrl);
-        var link = image[i].url 
+        var link = image[i].url
         var cardClass = $("<div class='card'>");
         var cardImage = $("<div class='card-image'>");
         var img = $("<img src=" + imageUrl + ">");
@@ -70,18 +74,17 @@ function renderLast(image) {
         cardImage.append(ref);
         cardClass.append(cardImage);
         $("#cardBox").append(cardClass);
-       var mainTitle = image[i].title ;
-       console.log(mainTitle);
-       var cardContent = $("<div class='card-content'>");
-       var p = $("<p>" + mainTitle + "</p>")
-       cardContent.append(p);
-       cardClass.append(cardContent);
-        
+        var mainTitle = image[i].title;
+        console.log(mainTitle);
+        var cardContent = $("<div class='card-content'>");
+        var p = $("<p>" + mainTitle + "</p>")
+        cardContent.append(p);
+        cardClass.append(cardContent);
+
     }
 }
 
-    var terms = $('#search').val();
-    $("#searchTerms").text("\""+terms + "\"");
+
 
 
 // function renderTitle(name) {
@@ -129,8 +132,8 @@ $(document).ready(function () {
         $('.progress2').show(0).delay(5000).hide(0);
         $('#lastBox').delay(5000).show(2000);
         $('#thirdBox').delay(5000).show(2000);
-        
-        
+
+
         var terms = $('#search').val();
         var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" +
             terms + "&limit=12&includes=Images:1&api_key=" + api_key;
@@ -139,23 +142,78 @@ $(document).ready(function () {
             url: etsyURL,
             dataType: 'jsonp',
             success: function (data) {
-       
+
                 var cat = data.results;
                 console.log(cat);
 
                 renderLast(cat);
                 // renderTitle(cat);
-                
+
+                var priceArray = [];
+                var badArray = [];
+
+                for (i = 0; i < cat.length; i++) {
+                    if (cat[i].state == "sold_out") {
+                        badArray.push(cat[i]);
+                    } else {
+                        var price = cat[i].price;
+                        priceArray.push(price);
+                    }
+                };
+
+                console.log("prices ", priceArray);
+
+                var priceArraySum = 0;
+                for (j = 0; j < priceArray.length; j++) {
+                    priceArraySum += parseInt(priceArray[j])
+                };
+                console.log("sum", priceArraySum);
+                var priceArrayAvg = priceArraySum / priceArray.length;
+                console.log("avg", priceArrayAvg);
+
+                var priceArraySTD = math.std(priceArray);
+                console.log("std", priceArraySTD);
+
+                var whatever = priceArraySTD / 10;
+                console.log("1/10 std", whatever);
+
+                function bubbleSort(arr) {
+                    var sorted = false;
+
+                    while (!sorted) {
+                        sorted = true;
+                        for (var i = 0; i < arr.length; i++) {
+                            if (parseFloat(arr[i]) > parseFloat(arr[i + 1])) {
+                                sorted = false;
+                                var temp = arr[i];
+                                arr[i] = arr[i + 1];
+                                arr[i + 1] = temp;
+                            }
+                        }
+                    }
+                    return arr;
+                };
+
+                var priceArraySorted = bubbleSort(priceArray);
+                console.log(priceArraySorted);
+
+                var trace = [{
+                    x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                    y: priceArraySorted,
+                    "type": "scatter",
+                }];
+
+                Plotly.plot("plotly-div", trace);
 
                 console.log(data);
                 return (data);
-                
-            }
-            });
-    });
-    
 
-    
+            }
+        });
+    });
+
+
+
 
 
     //Uses categories or category chosen by user to return only items that fit the criteria ==== IN PROCESS ====
