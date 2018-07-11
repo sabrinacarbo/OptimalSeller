@@ -198,6 +198,8 @@ $(document).ready(function () {
                 console.log("sum", priceArraySum);
                 var priceArrayAvg = priceArraySum / priceArray.length;
                 console.log("avg", priceArrayAvg);
+                var displayPrice = priceArrayAvg.toFixed(2);
+                $("#averagePrice").append("Average Price: $" + displayPrice);
 
                 var priceArraySTD = math.std(priceArray);
                 console.log("std", priceArraySTD);

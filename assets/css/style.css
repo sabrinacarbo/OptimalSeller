@@ -50,6 +50,12 @@ nav {
 
 }
 
+#plotly-div {
+    width: 550px;
+    height: auto;
+}
+
+
 #bg {
     background-image: url("bg.jpg");
     z-index: 0;
