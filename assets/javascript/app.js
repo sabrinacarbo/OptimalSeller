@@ -13,7 +13,7 @@ var api_key = "c9xve9dj721yyt16e7ksofgu";
 var q;
 var r;
 var s;
-// var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" + terms + "&limit=12&includes=Images:1&api_key=" + api_key;
+// var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" + terms + "&limit=1000&includes=Images:1&api_key=" + api_key;
 // console.log(terms);
 
 $("#searchForm").on("submit", function () {
@@ -159,7 +159,7 @@ $(document).ready(function () {
 
         var terms = $('#search').val();
         var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" +
-            terms + "&limit=12&includes=Images:1&api_key=" + api_key;
+            terms + "&limit=1000&includes=Images:1&api_key=" + api_key;
         console.log(terms);
         $.ajax({
             url: etsyURL,
@@ -172,13 +172,12 @@ $(document).ready(function () {
                 renderLast(cat);
                        
                 var priceArray = [];
-                var badArray = [];
+                
 
                 for (i = 0; i < cat.length; i++) {
-                    if (cat[i].state == "sold_out") {
-                        badArray.push(cat[i]);
-                    } else {
-                        var price = cat[i].price;
+                    console.log(Number(cat[i].price), (cat[i].price));
+                    if (isNaN(cat[i].price) == false) {
+                        var price = Number(cat[i].price);
                         priceArray.push(price);
                     }
                 };
@@ -187,7 +186,7 @@ $(document).ready(function () {
 
                 var priceArraySum = 0;
                 for (j = 0; j < priceArray.length; j++) {
-                    priceArraySum += parseInt(priceArray[j])
+                    priceArraySum += Number(priceArray[j])
                 };
                 console.log("sum", priceArraySum);
                 var priceArrayAvg = priceArraySum / priceArray.length;
@@ -215,57 +214,99 @@ $(document).ready(function () {
                     }
                     return arr;
                 };
-
+                
                 var priceArraySorted = bubbleSort(priceArray);
-                console.log(priceArraySorted);
+                console.log(priceArraySorted + priceArray);
 
+                zs = Math.floor(priceArrayAvg/whatever);
+                console.log(zs)
+                
+                var zz = []
+
+                for (var i = zs; i > -1; i--) {
+                    zz[zs-i] = [priceArrayAvg-whatever*(i+1)];
+                    for (var j = 0; j< priceArray.length; j++) {
+                        console.log(priceArray[j], (priceArrayAvg-(whatever*i)), (priceArrayAvg-(whatever*(i+1))));
+                        console.log($.isNumeric(priceArray[j]), $.isNumeric((priceArrayAvg+(whatever*i))), $.isNumeric((priceArrayAvg+(whatever*(i+1)))));
+                        if(priceArray[j] > (priceArrayAvg-(whatever*(i+1)))){ 
+                            console.log("yes...", priceArray[j]);
+                            if(priceArray[j]<(priceArrayAvg-(whatever*i))){
+                            console.log("maybe...", priceArray[j])
+                            zz[zs-i].push(priceArray[j]);
+                        }}
+                //console.log(priceArray[j], j)    
+                }
+                }
+                for (var i = 0; i < zs; i++) {
+                    zz[i+zs] = [priceArrayAvg+(whatever*i)];
+                    for (var j = 0; j< priceArray.length; j++) {
+                        console.log(priceArray[j], (priceArrayAvg+(whatever*i)), (priceArrayAvg+(whatever*(i+1))));
+                        console.log($.isNumeric(priceArray[j]), $.isNumeric((priceArrayAvg+(whatever*i))), $.isNumeric((priceArrayAvg+(whatever*(i+1)))));
+                        if(priceArray[j]*1>(priceArrayAvg+(whatever*i))){
+                            console.log("yes...", priceArray[j])
+                            if(priceArray[j]<(priceArrayAvg+(whatever*(i+1)))){
+                            console.log("maybe...", priceArray[j])
+                            zz[i+zs].push(priceArray[j]);
+                        }}console.log(zz);
+                }}
+                for (var i = 0; i < zz.length; ++i) {
+                    console.log(zz[i])
+                    zz[i].splice(0,1);
+
+            
+            }
+                
+                xs = [];
+                for(i=0;i<zz.length;i++){
+                    xs.push("$"+(parseInt(100*(i*whatever))/100))
+                }
+                ys = [];
+                for(i=0;i<zz.length;i++){
+                    ys.push(zz[i].length)
+                }
+
+                console.log(zz)
+                console.log(xs, priceArrayAvg, whatever)
+                console.log(ys)
                 var trace = [{
-                    x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-                    y: priceArraySorted,
+                    x: xs,
+                    y: ys,
                     "type": "scatter",
                 }];
 
                 Plotly.plot("plotly-div", trace);
 
+                $("#msrp").text("Our Suggested Optimal Price $"+Math.floor(100*priceArrayAvg+2.5*whatever)/100);
 
 
-                console.log(titles);
+
                 titlesB = titles.join();
-                console.log("joined titles", titlesB)
                 titlesC = titlesB.split(' ')
-                console.log("joined titles", titlesC)
                 for (q = 0; q < titlesC.length; q++) {
                     if (titlesC[q].length > 2 && titlesC[q] != "and" && titlesC[q] != "but" && titlesC[q] != "the" && terms.includes(titlesC[q]) != true) {
                         titlesD.push(titlesC[q].toUpperCase())
                     }
                 }
-                console.log(titlesD)
                 
-                console.log(1);
             var wordCount = {};
-                console.log(2);
-            titlesD.forEach(function (word) {
+                titlesD.forEach(function (word) {
                     if (!wordCount[word]) {
                         wordCount[word] = 1;
                     } else {
                         wordCount[word]++;
                     }
-                    console.log(3);
                     var wordCountArray = [];
                     Object.keys(wordCount).forEach(function (word) {
                         if(wordCount[word]>1){
                         wordCountArray.push([word, 10*wordCount[word]])};
                     });
-                    console.log(wordCountArray);
-                    console.log(4);
                     WordCloud(document.getElementById("my_canvas"),
                         {
                             list:  wordCountArray
                             
                         }
                     );
-                    console.log(terms)
-                });
+                    });
 
                 //var wordCountArray = [];
                 //Object.keys(wordCount).forEach(function ( word ) {
