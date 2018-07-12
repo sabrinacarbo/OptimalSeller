@@ -73,7 +73,7 @@ var terms = $('#search').val();
 $("#searchTerms").text("\"" + terms + "\"");
 
 function renderLast(image) {
-    for (var i = 0; i < image.length; i++) {
+    for (var i = 0; i < 12; i++) {
         var imageUrl = image[i].Images[0].url_570xN
         console.log(imageUrl);
         var link = image[i].url
